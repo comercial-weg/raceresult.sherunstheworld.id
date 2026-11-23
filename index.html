@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hasil Lomba She Runs The World 2026</title>
+<meta name="description" content="Hasil resmi She Runs The World 2026 kategori 10K. Cari waktu finish, posisi, pace, foto, dan unduh e-sertifikat pakai nomor BIB atau nama.">
+<meta name="theme-color" content="#FFF7F5">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hasil Lomba She Runs The World 2026">
+<meta property="og:description" content="Cari waktu finish, posisi, pace, foto, dan e-sertifikat kamu pakai nomor BIB atau nama.">
+<meta property="og:url" content="https://raceresult.sherunstheworld.id/">
+<meta property="og:image" content="https://raceresult.sherunstheworld.id/assets/logo.webp">
+<link rel="icon" type="image/webp" href="assets/logo.webp">
+<link rel="preload" href="data/results.json" as="fetch" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#cari">Lewati ke pencarian</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#cari" aria-label="She Runs The World 2026, Results">
+      <img src="assets/logo.webp" alt="" width="58" height="52">
+      <span class="brand-div" aria-hidden="true"></span>
+      <span class="brand-label">Results</span>
+    </a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="#cari">Cari hasil</a>
+      <a href="#semua">Semua hasil</a>
+      <a class="btn-olive" href="https://photos-srtw2026.dodi-wahyono.workers.dev/" target="_blank" rel="noopener">Cari foto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" id="cari">
+    <svg class="deco d1" aria-hidden="true" width="90" height="60" viewBox="0 0 90 60"><path d="M6 10 L40 26 L34 34 L84 52" fill="none" stroke="#BAB448" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="deco d2" aria-hidden="true" width="90" height="60" viewBox="0 0 90 60"><path d="M6 10 L40 26 L34 34 L84 52" fill="none" stroke="#C7637B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="deco d3" aria-hidden="true" width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="11" fill="none" stroke="#E47E92" stroke-width="7"/></svg>
+    <svg class="deco d4" aria-hidden="true" width="28" height="28" viewBox="0 0 34 34"><circle cx="17" cy="17" r="11" fill="none" stroke="#BAB448" stroke-width="7"/></svg>
+
+    <div class="hero-copy">
+      <div class="pills">
+        <span class="pill pink">Minggu, 22 November 2026</span>
+        <span class="pill olive">Plaza Timur, GBK Jakarta</span>
+        <span class="pill pink" id="pill-cat">10K</span>
+      </div>
+      <h1>Lihat <span class="c-pink">hasil</span><br><span class="c-olive">larimu.</span></h1>
+      <p class="lead">Ketik nomor BIB atau nama kamu. Waktu finish, posisi, dan pace langsung muncul.</p>
+      <form class="search" id="search-form" role="search" novalidate>
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <label for="q" class="sr-only">Nomor BIB atau nama</label>
+        <input id="q" type="search" autocomplete="off" placeholder="BIB atau nama" aria-describedby="helper" maxlength="60">
+        <button class="btn-plum" type="submit">Lihat hasil</button>
+      </form>
+      <p class="helper" id="helper" aria-live="polite">Memuat data hasil…</p>
+      <ul class="suggest" id="suggest" aria-label="Hasil pencarian nama"></ul>
+    </div>
+
+  </section>
+
+  <section class="result wrap" id="hasil" hidden aria-live="polite"></section>
+
+  <section class="block wrap" aria-labelledby="ringkas-h">
+    <div class="sec-head"><h2 id="ringkas-h">Ringkasan lomba</h2><p class="sec-sub" id="ringkas-sub"></p></div>
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <section class="block wrap" id="semua" aria-labelledby="semua-h">
+    <div class="sec-head"><h2 id="semua-h">Semua hasil</h2><p class="sec-sub" id="tcount"></p></div>
+    <div class="filters" id="filters" role="group" aria-label="Filter waktu finish">
+      <label class="tsearch"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="sr-only">Saring tabel</span><input id="tq" type="search" placeholder="Saring nama atau BIB" autocomplete="off"></label>
+    </div>
+    <div class="table" role="table" aria-label="Hasil lomba">
+      <div class="trow head" role="row"><span role="columnheader">Pos</span><span role="columnheader">BIB</span><span role="columnheader">Nama</span><span role="columnheader">Waktu</span><span role="columnheader" class="pc">Pace</span><span role="columnheader" class="ft"><span class="sr-only">Foto</span></span></div>
+      <div id="tbody"></div>
+    </div>
+    <div class="pager-wrap"><p id="shown" aria-live="polite"></p><nav class="pager" id="pager" aria-label="Halaman hasil"></nav></div>
+  </section>
+
+  <section class="block wrap">
+    <div class="help">
+      <svg class="deco" style="right:26px;top:22px" aria-hidden="true" width="90" height="60" viewBox="0 0 90 60"><path d="M6 10 L40 26 L34 34 L84 52" fill="none" stroke="#F1F0D2" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <h2>Hasilmu nggak ketemu?</h2>
+        <p class="big">Kadang BIB salah ketik atau nama tercatat beda ejaan. Coba cara di samping dulu sebelum hubungi panitia.</p>
+      </div>
+      <div class="help-cards">
+        <div class="hcard"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="3"/><path d="M8 10h8M8 14h5"/></svg></div><div><b>Cek BIB di jersey</b><span>Nomor BIB 10K ada di bagian depan jersey, 5 digit diawali angka 1.</span></div></div>
+        <div class="hcard o"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div><div><b>Cari pakai sebagian nama</b><span>Cukup ketik nama depan atau nama belakang di kolom pencarian.</span></div></div>
+        <div class="hcard"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"/></svg></div><div><b>Masih belum ada?</b><span>Kirim DM ke <a href="https://www.instagram.com/sherunstheworld.id/" target="_blank" rel="noopener">@sherunstheworld.id</a> dengan nomor BIB dan nama lengkap kamu.</span></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal" id="cert-modal" hidden>
+  <div class="mbox" role="dialog" aria-modal="true" aria-labelledby="cert-title">
+    <div class="mhead"><h2 id="cert-title">E-sertifikat</h2><button class="mclose" id="cert-close" type="button" aria-label="Tutup">&times;</button></div>
+    <div class="mprev" id="cert-prev"></div>
+    <div class="mfoot">
+      <p id="cert-size">Menyiapkan file PDF…</p>
+      <a class="btn-plum" id="cert-dl" aria-disabled="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg> Unduh PDF</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <p><b>She Runs The World 2026 by Heylocal</b><br><span id="foot-meta">Hasil resmi kategori 10K</span></p>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/sherunstheworld.id/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@sherunstheworld.id</a>
+      <a href="https://www.instagram.com/heylocallady/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@heylocallady</a>
+      <a href="https://photos-srtw2026.dodi-wahyono.workers.dev/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg>Foto lomba</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js" defer></script>
+</body>
+</html>
