@@ -2,16 +2,18 @@
 
 Situs statis untuk **raceresult.sherunstheworld.id**: cari hasil lomba 10K pakai nomor BIB atau nama, lihat posisi dan pace, buka foto, dan unduh e-sertifikat PDF (dibuat langsung di browser).
 
-Tidak ada build step. Semua file di root repo langsung bisa di-hosting.
+Tidak ada build step. Semua isi folder `public/` langsung di-serve sebagai file statis lewat Cloudflare Workers (static assets).
 
 ```
-index.html              halaman utama
-assets/style.css        tampilan
-assets/app.js           logika pencarian, tabel, e-sertifikat
-assets/logo.webp        logo
-assets/cert-bg.jpg      desain latar e-sertifikat
-assets/fonts/           font khusus sertifikat
-data/results.json       data hasil: [posisi, bib, nama, waktu, kategori, status]
+wrangler.jsonc                 config Worker "raceresult-sherunstheworld-id"
+public/index.html              halaman utama
+public/assets/style.css        tampilan
+public/assets/app.js           logika pencarian, tabel, e-sertifikat
+public/assets/logo.webp        logo
+public/assets/cert-bg.jpg      desain latar e-sertifikat
+public/assets/fonts/           font khusus sertifikat
+public/data/results.json       data hasil: [posisi, bib, nama, waktu, kategori, status]
+public/_headers                aturan cache
 ```
 
 ## Coba di lokal
@@ -19,23 +21,30 @@ data/results.json       data hasil: [posisi, bib, nama, waktu, kategori, status]
 Data diambil lewat `fetch`, jadi buka lewat server, bukan dobel-klik file:
 
 ```bash
-python3 -m http.server 8000
+python3 -m http.server 8000 --directory public
 ```
 
 Lalu buka http://localhost:8000.
 
-## Hosting
+## Hosting (Cloudflare Workers)
 
-Bisa di hosting statis mana pun (Cloudflare Pages, Netlify, Vercel, GitHub Pages). Pengaturannya:
+Worker `raceresult-sherunstheworld-id` dengan custom domain `raceresult.sherunstheworld.id`.
+
+Deploy otomatis lewat Workers Builds (Settings > Build, sambungkan repo ini):
 
 - Build command: kosongkan
-- Output / publish directory: `/` (root repo)
+- Deploy command: `npx wrangler deploy`
+- Root directory: `/`
 
-Setelah itu sambungkan domain `raceresult.sherunstheworld.id` di pengaturan custom domain hosting-nya.
+Atau deploy manual dari komputer:
+
+```bash
+npx wrangler deploy
+```
 
 ## Update data hasil
 
-Edit atau ganti `data/results.json`. Satu baris per pelari:
+Edit atau ganti `public/data/results.json`. Satu baris per pelari:
 
 ```json
 [1,10001,"Soraya Larasati","00:48:34","10K","Finished"]
