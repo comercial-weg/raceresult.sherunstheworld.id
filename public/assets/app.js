@@ -168,12 +168,10 @@
     const ss = DATA.map(r => r.s).sort((a,b)=>a-b);
     const med = ss.length % 2 ? ss[(ss.length-1)/2] : Math.round((ss[ss.length/2-1] + ss[ss.length/2]) / 2);
     const w = DATA[0], km = w.km;
-    const sub60 = DATA.filter(r => r.s < 3600).length;
     const tiles = [
       ['Finisher', nf(DATA.length), 'Kategori ' + Object.keys(totals).join(' & ')],
       ['Waktu tercepat', hms(w.s), nameHtml(w)],
-      ['Waktu tengah (median)', hms(med), 'Pace ' + paceStr(med, km) + ' /km'],
-      ['Finish di bawah 1 jam', nf(sub60), 'pelari, ' + (sub60/DATA.length*100).toLocaleString('id-ID',{maximumFractionDigits:1}) + '% dari finisher']
+      ['Waktu tengah (median)', hms(med), 'Pace ' + paceStr(med, km) + ' /km']
     ];
     $('stats').innerHTML = tiles.map(t => '<div class="stat"><div class="k">'+t[0]+'</div><div class="v">'+t[1]+'</div><div class="s">'+t[2]+'</div></div>').join('');
     $('ringkas-sub').textContent = 'Waktu finish terakhir ' + hms(ss[ss.length-1]);
