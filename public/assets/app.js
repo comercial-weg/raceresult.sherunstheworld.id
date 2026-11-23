@@ -1,5 +1,5 @@
 (function(){
-  const PHOTO = 'https://photos-srtw2026.dodi-wahyono.workers.dev/bib/';
+  const PHOTO = 'https://gallery.sherunstheworld.id/bib/';
   // E-sertifikat dibuat langsung di browser dari desain cert-bg.jpg (hanya kategori 10K).
   const CERT_BG = 'assets/cert-bg.jpg';
   const CERT_CATS = ['10K'];
