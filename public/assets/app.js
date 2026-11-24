@@ -102,7 +102,7 @@
       pdfUrl = URL.createObjectURL(pdf);
       // Pratinjau = kanvasnya langsung (tanpa blob:/data: URL, jadi aman dari pemblokiran gambar)
       c.setAttribute('role', 'img');
-      c.setAttribute('aria-label', 'E-sertifikat 10K finisher atas nama ' + r.name + ', waktu ' + r.time);
+      c.setAttribute('aria-label', 'E-sertifikat 10K finisher atas nama ' + r.name + ', finish time ' + r.time);
       pv.innerHTML = ''; pv.appendChild(c);
       pdfBlob = pdf; dl.href = pdfUrl; dl.download = certFile(r); dl.removeAttribute('aria-disabled');
       $('cert-size').textContent = 'PDF ' + Math.round(pdf.size / 1024).toLocaleString('id-ID') + ' KB, siap dicetak atau dibagikan.';
@@ -170,11 +170,11 @@
     const w = DATA[0], km = w.km;
     const tiles = [
       ['Finisher', nf(DATA.length), 'Kategori ' + Object.keys(totals).join(' & ')],
-      ['Waktu tercepat', hms(w.s), nameHtml(w)],
-      ['Waktu tengah (median)', hms(med), 'Pace ' + paceStr(med, km) + ' /km']
+      ['Gun time tercepat', hms(w.s), nameHtml(w)],
+      ['Gun time tengah (median)', hms(med), 'Pace ' + paceStr(med, km) + ' /km']
     ];
     $('stats').innerHTML = tiles.map(t => '<div class="stat"><div class="k">'+t[0]+'</div><div class="v">'+t[1]+'</div><div class="s">'+t[2]+'</div></div>').join('');
-    $('ringkas-sub').textContent = 'Waktu finish terakhir ' + hms(ss[ss.length-1]);
+    $('ringkas-sub').textContent = 'Gun time terakhir ' + hms(ss[ss.length-1]);
   }
 
   /* ---------- table ---------- */
@@ -221,7 +221,7 @@
     fState.page = Math.min(Math.max(1, fState.page), pages);
     const start = (fState.page - 1) * PAGE, shown = L.slice(start, start + PAGE);
     $('tbody').innerHTML = shown.length ? shown.map(r =>
-      '<div class="trow r" role="row" tabindex="0" data-bib="'+r.bib+'" aria-label="Posisi '+r.pos+', '+esc(r.name||'nama belum terdaftar')+', '+r.time+'">'+
+      '<div class="trow r" role="row" tabindex="0" data-bib="'+r.bib+'" aria-label="Posisi '+r.pos+', '+esc(r.name||'nama belum terdaftar')+', gun time '+r.time+'">'+
         '<span class="pos" role="cell">'+r.pos+'</span>'+
         '<span class="bib" role="cell"><span class="chip">#'+r.bib+'</span></span>'+
         '<span class="nm'+(r.name?'':' unknown')+'" role="cell">'+nameHtml(r)+'</span>'+
@@ -270,7 +270,7 @@
         '<div>'+
           '<div class="eyebrow"><span class="chip">Finisher '+esc(r.cat)+'</span><span class="chip pink">BIB #'+r.bib+'</span></div>'+
           '<h2 class="rname'+(r.name?'':' unknown')+'" id="rname" tabindex="-1">'+nameHtml(r)+'</h2>'+
-          '<div class="rtime-label">Waktu finish</div>'+
+          '<div class="rtime-label">Gun time</div>'+
           '<div class="rtime">'+hms(r.s)+'</div>'+
           '<div class="rprog">'+
             '<p class="rprog-text">'+(faster>0 ? 'Kamu finish lebih cepat dari <b>'+nf(faster)+' pelari</b>.' : 'Kamu finish paling akhir, tapi tetap finish. Itu yang penting.')+(r.pos===1?' <b>Juara 1!</b>':'')+'</p>'+
